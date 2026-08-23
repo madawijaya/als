@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALS</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,56 +13,69 @@
 
 <body>
 
-    <!-- Desktop Sidebar (Hidden on Mobile) -->
     <aside class="desktop-sidebar">
         <div class="logo-area">
-            <img src="logo.png" alt="ALS Logo" class="sidebar-logo">
-            <!-- <h1>Anugrah Lautan Sejahtera</h1> -->
+            <img src="logo.png" alt="ALS Logo" class="sidebar-logo
         </div>
         <nav class="desktop-nav">
             <ul>
-                <li class="active">Home</li>
+                <li class="nav-btn active" data-view="home">Home</li>
+                <li class="nav-btn" data-view="recipe">Recipe</li>
             </ul>
         </nav>
     </aside>
 
     <div class="main-container">
-        <!-- Mobile Header -->
         <header class="mobile-header">
             <div class="mobile-logo-container">
                 <img src="logo.png" alt="ALS Logo" class="mobile-logo">
             </div>
             <div class="search-bar">
                 <span class="search-icon">🔍</span>
-                <input type="text" placeholder="Cari Ikan Asin">
+                <input type="text" id="search-input-mobile" placeholder="Cari Ikan Asin...">
             </div>
         </header>
 
-        <!-- Desktop Header -->
         <header class="desktop-header">
             <div class="search-bar">
                 <span class="search-icon">🔍</span>
-                <input type="text" placeholder="Cari Ikan Asin">
+                <input type="text" id="search-input-desktop" placeholder="Cari Ikan Asin...">
             </div>
         </header>
 
-        <!-- Best Seller Carousel -->
-        <section class="carousel-section">
-            <h2 class="section-title">Best Sellers</h2>
-            <div class="carousel-container">
-                <div class="carousel-track" id="carousel-track">
-                    <!-- Slides injected by JS -->
+        <div id="home-view" class="view-section">
+            <section class="carousel-section">
+                <h2 class="section-title">Best Sellers</h2>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track">
+                    </div>
+                    <button class="carousel-btn prev-btn">&lt;</button>
+                    <button class="carousel-btn next-btn">&gt;</button>
+                    <div class="carousel-dots" id="carousel-dots"></div>
                 </div>
-                <button class="carousel-btn prev-btn">&lt;</button>
-                <button class="carousel-btn next-btn">&gt;</button>
-                <div class="carousel-dots" id="carousel-dots"></div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Content Area -->
-        <main id="ikan-container" class="ikan-list">
-            <!-- Cards will be injected here by JS -->
-        </main>
+            <main id="ikan-container" class="ikan-list">
+            </main>
+        </div>
+
+        <div id="recipe-view" class="view-section hidden">
+            <section class="recipe-banner">
+                <div class="banner-content">
+                    <h2>🍳 Resep Masakan Ikan Asin</h2>
+                    <p>Jelajahi resep kuliner khas Nusantara & Internasional berbahan dasar ikan asin berkualitas.</p>
+                    <div class="recipe-filter-chips">
+                        <button class="chip active" data-filter="all">Semua</button>
+                        <button class="chip" data-filter="Indonesian">Nusantara</button>
+                        <button class="chip" data-filter="International">Internasional</button>
+                        <button class="chip" data-filter="Sambal">Sambal & Oseng</button>
+                    </div>
+                </div>
+            </section>
+
+            <main id="recipe-grid-container" class="recipe-grid">
+            </main>
+        </div>
 
         <footer class="site-footer">
             <div class="footer-content">
@@ -94,26 +106,58 @@
         </footer>
     </div>
 
-    <!-- Bottom Navigation (Mobile Only) -->
     <nav class="bottom-nav">
-        <div class="nav-item active">
+        <div class="nav-item active" data-view="home">
             <span class="icon">🏠</span>
             <span class="label">Home</span>
         </div>
-
+        <div class="nav-item" data-view="recipe">
+            <span class="icon">🍳</span>
+            <span class="label">Recipe</span>
+        </div>
     </nav>
 
-    <!-- Ikan Detail Modal -->
     <div id="ikan-modal" class="modal hidden">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <div class="modal-body">
                 <div class="modal-image">
-                    <!-- Image injected by JS -->
                 </div>
                 <div class="modal-info">
                     <h2 id="modal-title">Title</h2>
                     <p id="modal-description">Description goes here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="recipe-modal" class="modal hidden">
+        <div class="modal-content recipe-modal-content">
+            <span class="close-btn recipe-close-btn">&times;</span>
+            <div class="recipe-modal-header" id="recipe-modal-header">
+                <span class="recipe-modal-emoji" id="recipe-modal-emoji">🍳</span>
+                <div class="recipe-modal-title-group">
+                    <span class="recipe-modal-badge" id="recipe-modal-category">Indonesian</span>
+                    <h2 id="recipe-modal-title">Nama Resep</h2>
+                    <div class="recipe-modal-meta">
+                        <span id="recipe-modal-fish">🐟 Teri Medan</span>
+                        <span id="recipe-modal-time">⏱️ 20 Menit</span>
+                        <span id="recipe-modal-difficulty">🌶️ Mudah</span>
+                        <span id="recipe-modal-servings">🍽️ 2 Porsi</span>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-modal-body">
+                <p class="recipe-modal-desc" id="recipe-modal-desc"></p>
+
+                <div class="recipe-modal-section">
+                    <h3>🛒 Bahan-Bahan</h3>
+                    <ul class="ingredients-list" id="recipe-modal-ingredients"></ul>
+                </div>
+
+                <div class="recipe-modal-section">
+                    <h3>👩‍🍳 Langkah Pembuatan</h3>
+                    <ol class="steps-list" id="recipe-modal-steps"></ol>
                 </div>
             </div>
         </div>
