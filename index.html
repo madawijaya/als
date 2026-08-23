@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALS</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Desktop Sidebar (Hidden on Mobile) -->
+    <aside class="desktop-sidebar">
+        <div class="logo-area">
+            <img src="logo.png" alt="ALS Logo" class="sidebar-logo">
+            <!-- <h1>Anugrah Lautan Sejahtera</h1> -->
+        </div>
+        <nav class="desktop-nav">
+            <ul>
+                <li class="active">Home</li>
+            </ul>
+        </nav>
+    </aside>
+
+    <div class="main-container">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+            <div class="mobile-logo-container">
+                <img src="logo.png" alt="ALS Logo" class="mobile-logo">
+            </div>
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Cari Ikan Asin">
+            </div>
+        </header>
+
+        <!-- Desktop Header -->
+        <header class="desktop-header">
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Cari Ikan Asin">
+            </div>
+        </header>
+
+        <!-- Best Seller Carousel -->
+        <section class="carousel-section">
+            <h2 class="section-title">Best Sellers</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <!-- Slides injected by JS -->
+                </div>
+                <button class="carousel-btn prev-btn">&lt;</button>
+                <button class="carousel-btn next-btn">&gt;</button>
+                <div class="carousel-dots" id="carousel-dots"></div>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <main id="ikan-container" class="ikan-list">
+            <!-- Cards will be injected here by JS -->
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-column about">
+                    <h3>About</h3>
+                    <p>Kami adalah penyedia ikan asin berkualitas tinggi dengan rasa otentik. Melayani sepenuh hati
+                        untuk kebutuhan dapur Anda.</p>
+
+                </div>
+
+                <div class="footer-column contact">
+                    <h3>Have a Question?</h3>
+                    <a href="https://maps.app.goo.gl/64obGnNEdXarstF58" target="_blank"
+                        class="contact-item location-link">
+                        <span class="icon">📍</span>
+                        <span>Toko ALS, Pergudangan Gudang Asin, Jakarta Barat, Indonesia</span>
+                    </a>
+                    <div class="contact-item">
+                        <span class="icon">📞</span>
+                        <span>+62 123 4567 890</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">✉️</span>
+                        <span>alskapuk@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation (Mobile Only) -->
+    <nav class="bottom-nav">
+        <div class="nav-item active">
+            <span class="icon">🏠</span>
+            <span class="label">Home</span>
+        </div>
+
+    </nav>
+
+    <!-- Ikan Detail Modal -->
+    <div id="ikan-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <!-- Image injected by JS -->
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Title</h2>
+                    <p id="modal-description">Description goes here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
